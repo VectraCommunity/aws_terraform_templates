@@ -1,6 +1,6 @@
 provider "aws" {
   region  = var.region
-  profile = "sample_dev"
+  profile = "bxp"
 }
 
 resource "aws_vpc" "sample-vpc" {
@@ -35,4 +35,9 @@ resource "aws_cloudformation_stack" "sensor_stack" {
 
 output "sensor_instance_id" {
   value = aws_cloudformation_stack.sensor_stack.outputs.InstanceId
+}
+
+
+output "sensor_private_mgt_ip" {
+  value = aws_cloudformation_stack.sensor_stack.outputs.PrivateManagementIP
 }
