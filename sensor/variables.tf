@@ -37,3 +37,19 @@ variable "sshKey" {
 variable "templateURL" {
     type = string
 }
+
+variable "mgtPrivateIP" {
+    type = string
+}
+
+variable "mgtSecurityGroup" {
+    type = string
+}
+
+variable "trafficPrivateIP" {
+    type = string
+}
+
+variable "trafficSecurityGroup" {
+    type = string
+}
