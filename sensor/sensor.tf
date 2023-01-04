@@ -19,14 +19,20 @@ resource "aws_cloudformation_stack" "sensor_stack" {
     baseName          = var.baseName
     brainIP           = var.brainIP
     instanceType      = var.instanceType
+    mgtPrivateIP      = var.mgtPrivateIP
+    mgtSecurityGroup  = var.mgtSecurityGroup
     mgtSubnet         = aws_subnet.sample-subnet.id
-    networkLB         = var.networkLB
     mgtVpc            = aws_vpc.sample-vpc.id
-    tenancy           = var.tenancy
-    trafficSubnet     = aws_subnet.sample-subnet.id
-    trafficVpc        = aws_vpc.sample-vpc.id
+    networkLB         = var.networkLB
     registrationToken = var.registrationToken
     sshKey            = var.sshKey
+    tenancy           = var.tenancy
+    trafficPrivateIP  = var.trafficPrivateIP
+    trafficSecurityGroup = var.trafficSecurityGroup
+    trafficSubnet     = aws_subnet.sample-subnet.id
+    trafficVpc        = aws_vpc.sample-vpc.id
+    
+    
   }
 
   template_url = var.templateURL
