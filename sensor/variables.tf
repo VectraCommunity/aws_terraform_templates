@@ -18,6 +18,10 @@ variable "instanceType" {
     type = string
 }
 
+variable "networkLB" {
+    type = string
+}
+
 variable "tenancy" {
     type = string
 }
