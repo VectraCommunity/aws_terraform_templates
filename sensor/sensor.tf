@@ -1,7 +1,6 @@
 provider "aws" {
-  version = "~> 2.0"
   region  = var.region
-  profile = "your-account-profile-here"
+  profile = "sample_dev"
 }
 
 resource "aws_vpc" "sample-vpc" {
@@ -21,6 +20,7 @@ resource "aws_cloudformation_stack" "sensor_stack" {
     brainIP           = var.brainIP
     instanceType      = var.instanceType
     mgtSubnet         = aws_subnet.sample-subnet.id
+    networkLB         = var.networkLB
     mgtVpc            = aws_vpc.sample-vpc.id
     tenancy           = var.tenancy
     trafficSubnet     = aws_subnet.sample-subnet.id
@@ -33,4 +33,6 @@ resource "aws_cloudformation_stack" "sensor_stack" {
 
 }
 
-
+output "sensor_instance_id" {
+  value = aws_cloudformation_stack.sensor_stack.outputs.InstanceId
+}
